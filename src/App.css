@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+body {
+  font-family: 'Lato', 'Tahoma';
+}
+
+.left-sidebar {
+  display: inline-block;
+  width: 30%;
+  vertical-align: top;
+  padding-left: 7em;
+}
+
+.main-content {
+  display: inline-block;
+  width: 65%;
+  margin-left: 1.5em;
+}
+
+.sidebar-stars-div {
+  display: inline-block;
+  width: 30%;
+}
+
+.sidebar-text-div {
+  display: inline-block;
+  width: 70%;
+}
+
+.main-content-stars-div {
+  display: inline-block;
+  width: 25%;
+}
+
+.main-content-text-div {
+  display: inline-block;
+  width: 75%;
+  color: grey;
+}
+
+hr {
+  border-top: 1px solid black;
+}
