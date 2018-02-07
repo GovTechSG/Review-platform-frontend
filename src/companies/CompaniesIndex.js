@@ -44,15 +44,11 @@ class CompaniesIndex extends Component {
 
   _renderSidebar() {
     return (
-      <div className='left-sidebar'>
+      <Col md={3}>
         <div style={{marginBottom: "1em"}}>
-          <input style={{
-            borderRadius: "5px",
-            padding: "3.5px",
-            width: "80%"
-          }} type="text" placeholder="Input UEN or name" />
+          <input className="search-box" type="text" placeholder="Input UEN or name" />
         </div>
-        <div><Button bsStyle="primary" style={{width:"30%"}}>Search</Button></div>
+        <div><Button className="search-button" bsStyle="primary" >Search</Button></div>
         <br/>
 
         <h4><b>Statistics</b></h4>
@@ -60,7 +56,8 @@ class CompaniesIndex extends Component {
         <h5><b>Companies:</b> {this.state.statistics.companies}</h5>
         <h5><b>Products:</b> {this.state.statistics.products}</h5>
         <h5><b>Services:</b> {this.state.statistics.services}</h5>
-      </div>
+        <hr className="hide-md-up" />
+      </Col>
     );
   }
 
@@ -70,10 +67,10 @@ class CompaniesIndex extends Component {
       return (
         <Link key={i} to={`/companies/${company.id}`}>
           <Row>
-            <Col xs={2}>
-              <img width={125} src={require(`../img/companies/${name}.png`)} alt=""/>
+            <Col md={2} xs={3}>
+              <img className="full-width" src={require(`../img/companies/${name}.png`)} alt=""/>
             </Col>
-            <Col xs={10}>
+            <Col md={10} xs={9}>
               <p style={{ color: 'black' }}><b>{company.name} | UEN: {company.UEN}</b></p>
               <div className='main-content-stars-div'>
                 <ReactStars
@@ -84,6 +81,7 @@ class CompaniesIndex extends Component {
               <div className="main-content-text-div">
                 {company.reviews_count + ' ' + (company.reviews_count === 1 ? 'Review' : 'Reviews')}
               </div>
+              <br/>
               {
                 company.strengths.map((strength, i) => {
                   return (
@@ -112,9 +110,9 @@ class CompaniesIndex extends Component {
     return (
       <div>
         {this._renderSidebar()}
-        <div className='main-content'>
+        <Col md={9}>
           {this._renderCompanies()}
-        </div>
+        </Col>
       </div>
     );
   }

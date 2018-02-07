@@ -54,7 +54,7 @@ const Header = () => (
 
 const Footer = () => (
   <div style={{textAlign: "center"}}>
-    <img src={require("./img/footer-img.png")} alt=""/>
+    <img className="img-responsive footer-image" src={require("./img/footer-img.png")} alt=""/>
   </div>
 );
 

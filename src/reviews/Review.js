@@ -74,7 +74,7 @@ class Review extends Component {
     let type = this.props.match.params.entity;
     let name = entity.name.toLowerCase().replace(/ /g, "_");
     return (
-      <div className='left-sidebar'>
+      <Col md={3}>
         <div>
           <img width={125} src={require(`../img/${type}/${name}.png`)} alt="" />
         </div>
@@ -92,8 +92,9 @@ class Review extends Component {
         <br/>
         <p><b>Company: </b>{this.state.entity.company_name}</p>
         <p><b>Description: </b><br/>{entity.description}</p>
-        <Button bsStyle='primary'>Write a Review</Button>
-      </div>
+        <Button className="review-button" bsStyle='primary'>Write a Review</Button>
+        <hr className="hide-md-up" />
+      </Col>
     );
   }
 
@@ -104,10 +105,10 @@ class Review extends Component {
     return (
       <div>
         <Row>
-          <Col xs={2}>
-            <img width={125} src={require(`../img/companies/${name}.png`)} alt="" />
+          <Col md={2} xs={3}>
+            <img className="full-width" src={require(`../img/companies/${name}.png`)} alt="" />
           </Col>
-          <Col xs={10}>
+          <Col md={10} xs={9}>
             <div className='main-content-stars-div'>
               <p><b>{review.company.name}</b></p>
               <ReactStars
@@ -138,10 +139,10 @@ class Review extends Component {
       return (
         <div key={i}>
           <Row>
-            <Col xs={2}>
-              <img width={125} src={require(`../img/agencies/${name}.png`)} alt="" />
+            <Col md={2} xs={3}>
+              <img className="full-width" src={require(`../img/agencies/${name}.png`)} alt="" />
             </Col>
-            <Col xs={10}>
+            <Col md={10} xs={9}>
               <p><b>{comment.agency.name}</b></p>
               {this._formatDateTime(comment.updated_at)}
               <p>{comment.content}</p>
@@ -157,14 +158,14 @@ class Review extends Component {
     return (
       <div>
         {this._renderSidebar()}
-        <div className='main-content'>
+        <Col md={9}>
           {this.state.review && this._renderReview()}
           <h5>
             <b>Comments</b>
             <hr/>
           </h5>
           {this._renderComments()}
-        </div>
+        </Col>
       </div>
     );
   }

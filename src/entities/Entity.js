@@ -61,7 +61,7 @@ class Entity extends Component {
     let type = this.props.match.params.entity;
     let name = entity.name.toLowerCase().replace(/ /g, "_");
     return (
-      <div className='left-sidebar'>
+      <Col md={3}>
         <div>
           <img width={125} src={require(`../img/${type}/${name}.png`)} alt="" />
           {/* <img width={300} src={require('../img/0.png')} alt="" /> */}
@@ -80,8 +80,9 @@ class Entity extends Component {
         <br/>
         <p><b>Company: </b>{this.state.entity.company_name}</p>
         <p><b>Description: </b><br/>{entity.description}</p>
-        <Button bsStyle='primary'>Write a Review</Button>
-      </div>
+        <Button className="review-button" bsStyle='primary'>Write a Review</Button>
+        <hr className="hide-md-up" />
+      </Col>
     );
   }
 
@@ -91,10 +92,10 @@ class Entity extends Component {
       return (
         <Link key={i} to={`/${this.props.match.params.entity}/${this.state.entity.id}/reviews/${review.id}`}>
           <Row>
-            <Col xs={2}>
-              <img width={125} src={require(`../img/companies/${name}.png`)} alt="" />
+            <Col md={2} xs={3}>
+              <img className="full-width" src={require(`../img/companies/${name}.png`)} alt="" />
             </Col>
-            <Col xs={10}>
+            <Col md={10} xs={9}>
               <div className='main-content-stars-div'>
                 <p style={{color: "black"}}><b>{review.company.name}</b></p>
                 <ReactStars
@@ -105,12 +106,13 @@ class Entity extends Component {
               <div className='main-content-text-div'>
                 <p>
                   {this._formatDateTime(review.updated_at)}
-                  <span style={{float: "right"}}>
-                    {review.likes_count + " "}<Glyphicon glyph='thumbs-up' />
-                    {" " + review.comments_count + " "}<Glyphicon glyph='comment' />
-                  </span>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  {review.likes_count + " "}<Glyphicon glyph='thumbs-up' />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  {review.comments_count}<Glyphicon glyph='comment' />
                 </p>
               </div>
+              <br/>
               {
                 review.strengths.map((strength, i) => {
                   return (
@@ -137,9 +139,9 @@ class Entity extends Component {
     return (
       <div>
         {this._renderSidebar()}
-        <div className='main-content'>
+        <Col md={9}>
             {this._renderReviews()}
-        </div>
+        </Col>
       </div>
     );
   }

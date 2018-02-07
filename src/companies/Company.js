@@ -56,7 +56,7 @@ class Company extends Component {
     if (this.state.company === null) return null;
     let name = this.state.company.name.toLowerCase().replace(/ /g, "_");
     return (
-      <div className='left-sidebar'>
+      <Col md={3}>
         <div>
           <img width={200} src={require(`../img/companies/${name}.png`)} alt=""/>
         </div>
@@ -77,8 +77,9 @@ class Company extends Component {
         <p><b>Services: </b>{this.state.services.length}</p>
         <p><b>Description: </b><br/>{this.state.company.description}</p>
         <br/>
-        <Button bsStyle='primary'>Write a Review</Button>
-      </div>
+        <Button className="review-button" bsStyle='primary'>Write a Review</Button>
+        <hr className="hide-md-up" />
+      </Col>
     );
   }
 
@@ -88,10 +89,10 @@ class Company extends Component {
       return (
         <Link key={i} to={`/${type}/${entity.id}`}>
           <Row>
-            <Col xs={2}>
-              <img width={125} src={require(`../img/${type}/${name}.png`)} alt="" />
+            <Col md={2} xs={3}>
+              <img className="full-width" src={require(`../img/${type}/${name}.png`)} alt="" />
             </Col>
-            <Col xs={10}>
+            <Col md={10} xs={9}>
               <div className='main-content-stars-div'>
                 <p style={{color: "black"}}><b>{entity.name}</b></p>
                 <ReactStars
@@ -115,10 +116,10 @@ class Company extends Component {
     return (
       <div>
         {this._renderSidebar()}
-        <div className='main-content'>
+        <Col md={9}>
           {this._renderEntities('products')}
           {this._renderEntities('services')}
-        </div>
+        </Col>
       </div>
     );
   }
