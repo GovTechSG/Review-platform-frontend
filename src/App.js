@@ -3,7 +3,12 @@ import './App.css';
 import {
   Row,
   Col,
-  Button
+  Button,
+  Nav,
+  Navbar,
+  NavItem,
+  NavDropdown,
+  MenuItem
 } from 'react-bootstrap';
 import { Switch, Route } from 'react-router-dom';
 import CompaniesIndex from './companies/CompaniesIndex';
@@ -12,42 +17,39 @@ import Entity from './entities/Entity';
 import Review from './reviews/Review';
 
 const Header = () => (
-  <div>
-    <a href="/" style={{
-      color: "white"
-    }}>
-      <div className="left-sidebar" style={{
-        backgroundColor: "#4A8EE0",
-        textAlign: "center",
-        paddingLeft: "0"
-      }}>
-        <h1 style={{
-          fontSize: "60px",
-          marginBottom: "0"
-        }}>WRP</h1>
-        <p style={{marginTop: "0", marginBottom: "2em"}}>WOG Review Platform</p>
-      </div>
-    </a>
-    <div className="main-content">
-      <div style={{
-        textAlign: "right",
-        marginBottom: "3em"
-      }}>
-        <img width={200} src={require("./img/govt.png")} alt=''/>
-      </div>
-      <div>
-        <Row>
-          <Col xs={2} style={{textAlign: "center"}}><b><a href="/" style={{textDecoration: "none", color: "black"}}>Home</a></b></Col>
-          <Col xs={2} style={{textAlign: "center"}}><b>Write a Review</b></Col>
-          <Col xs={2} style={{textAlign: "center"}}><b>FAQ</b></Col>
-          <Col xsOffset={4} xs={2} style={{ textAlign: "right" }}>
-            <Button bsStyle="primary">Logout</Button>
-          </Col>
-        </Row>
-      </div>
-      <hr />
+  <Navbar collapseOnSelect fluid>
+    <Navbar.Header className="col-md-3">
+      <Navbar.Brand>
+        <a href="/">
+          <h1>WRP</h1>
+          <p>WOG Review Platform</p>
+        </a>
+      </Navbar.Brand>
+      <Navbar.Toggle />
+    </Navbar.Header>
+    <div className="pull-right">
+      <img width={200} src={require("./img/govt.png")} alt=''/>
     </div>
-  </div>
+    <Navbar.Collapse>
+      <Nav>
+        <NavItem eventKey={1} href="#">
+          Home
+        </NavItem>
+        <NavItem eventKey={2} href="#">
+          Write a Review
+        </NavItem>
+        <NavItem eventKey={3} href="#">
+          FAQ
+        </NavItem>
+      </Nav>
+      <Nav pullRight>
+        <NavItem className="logout" eventKey={1} href="#">
+          <Button bsStyle="primary">Logout</Button>
+          <span>Logout</span>
+        </NavItem>
+      </Nav>
+    </Navbar.Collapse>
+  </Navbar>
 );
 
 const Footer = () => (
@@ -59,18 +61,20 @@ const Footer = () => (
 class App extends Component {
   render() {
     return (
-      <div className='container-fluid'>
+      <div>
         <Header />
-        <Switch>
-          <Route exact path='/' component={CompaniesIndex}/>
-          <Route exact path='/companies' component={CompaniesIndex}/>
-          <Route exact path='/companies/:id' component={Company}/>
+        <div className='container-fluid'>
+          <Switch>
+            <Route exact path='/' component={CompaniesIndex}/>
+            <Route exact path='/companies' component={CompaniesIndex}/>
+            <Route exact path='/companies/:id' component={Company}/>
 
-          <Route exact path='/:entity/:id' component={Entity} />
+            <Route exact path='/:entity/:id' component={Entity} />
 
-          <Route exact path='/:entity/:entity_id/reviews/:id' component={Review} />
-        </Switch>
-        <Footer />
+            <Route exact path='/:entity/:entity_id/reviews/:id' component={Review} />
+          </Switch>
+          <Footer />
+        </div>
       </div>
     );
   }

@@ -40,3 +40,68 @@ body {
 hr {
   border-top: 1px solid black;
 }
+
+.navbar-header {
+  background: #2e6da4;
+}
+
+.navbar-header h1 {
+  font-size: 60px;
+  margin-bottom: 0;
+}
+
+.navbar-header p {
+  color: white;
+  margin-top: 0;
+  margin-bottom: 2em;
+}
+
+@media (max-width: 768px) {
+  .navbar-header h1 {
+    display: none;
+  }
+
+  nav img {
+    display: none;
+  }
+
+  .logout button {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-header {
+    height: 175px;
+    position: relative;
+    left: -15px;
+  }
+
+  a.navbar-brand {
+    width: 100%;
+  }
+
+  .navbar-header h1 {
+    color: white;
+    font-size: 60px;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  .navbar-header p {
+    text-align: center;
+  }
+
+  .navbar-collapse {
+    height: 175px;
+    margin-top: 110px;
+  }
+
+  nav img {
+    padding-top: 20px;
+  }
+
+  .logout span {
+    display: none;
+  }
+}
