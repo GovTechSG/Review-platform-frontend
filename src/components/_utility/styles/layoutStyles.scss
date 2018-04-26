@@ -1,0 +1,114 @@
+$header-height-narrow: 50px;
+$header-height: 175px;
+$header-offset-height: -125px;
+$infobar-height: 60px;
+$sidebar-width: 290px;
+$narrow-breakpoint: 992px;
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  min-height: 100vh;
+  width: 100%;
+  box-shadow: 0 0 30px #b9b9b9;
+}
+
+.children {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  width: 0;
+
+  // React wraps children in a div
+  > div {
+    width: 100%;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.child {
+  width: 100%;
+}
+
+.children-wrapper {
+  display: flex;
+  flex: 1 0 auto;
+  // Prevents flash of black background (child component not loaded yet) when page loads
+  background-color: #f5f5f5;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .children-wrapper {
+    height: 86%;
+  }
+}
+
+.header-wrapper {
+  min-height: $header-height;
+}
+
+.infobar-wrapper {
+  min-height: $infobar-height;
+}
+
+.infobar {
+  max-width: 1080px;
+  min-height: $infobar-height;
+  width: 100%;
+  z-index: 100;
+
+  &.sticky {
+    position: fixed;
+    margin-top: $header-offset-height;
+  }
+}
+
+.sidebar-wrapper {
+  display: flex;
+  flex: 0 0 auto;
+  min-height: 100%;
+  min-width: $sidebar-width;
+}
+
+.sidebar {
+  background-color: #dfe7ec;
+  display: flex;
+  min-height: 100%;
+  width: $sidebar-width;
+  z-index: 10;
+
+  &.sticky {
+    margin-top: $header-offset-height;
+    position: fixed;
+  }
+}
+
+@media only screen and (max-width: $narrow-breakpoint) {
+  .sidebar-wrapper {
+    display: none;
+  }
+
+  .header-wrapper {
+    min-height: $header-height-narrow;
+  }
+}
+
+// rewrite the print layout
+@media only print {
+  .header-wrapper,
+  .sidebar-wrapper {
+    display: none;
+  }
+
+  // Fix Firefox cutting page off in print, see layout.scss as well
+  .children-wrapper,
+  .children,
+  .children > div {
+    display: block;
+    height: auto;
+    width: auto;
+  }
+}

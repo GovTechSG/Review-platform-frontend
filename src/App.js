@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import {
   Row,
   Col,
@@ -11,10 +11,7 @@ import {
   MenuItem
 } from 'react-bootstrap';
 import { Switch, Route } from 'react-router-dom';
-import CompaniesIndex from './companies/CompaniesIndex';
-import Company from './companies/Company';
-import Entity from './entities/Entity';
-import Review from './reviews/Review';
+import CompanyIndexPage from './components/company/index/CompanyIndexPage';
 
 const Header = () => (
   <Navbar collapseOnSelect fluid>
@@ -28,7 +25,7 @@ const Header = () => (
       <Navbar.Toggle />
     </Navbar.Header>
     <div className="pull-right">
-      <img width={200} src={require("./img/govt.png")} alt=''/>
+      <img width={200} src={require("./assets/img/govt.png")} alt=''/>
     </div>
     <Navbar.Collapse>
       <Nav>
@@ -54,7 +51,7 @@ const Header = () => (
 
 const Footer = () => (
   <div style={{textAlign: "center"}}>
-    <img className="img-responsive footer-image" src={require("./img/footer-img.png")} alt=""/>
+    <img className="img-responsive footer-image" src={require("./assets/img/footer-img.png")} alt=""/>
   </div>
 );
 
@@ -65,13 +62,8 @@ class App extends Component {
         <Header />
         <div className='container-fluid'>
           <Switch>
-            <Route exact path='/' component={CompaniesIndex}/>
-            <Route exact path='/companies' component={CompaniesIndex}/>
-            <Route exact path='/companies/:id' component={Company}/>
-
-            <Route exact path='/:entity/:id' component={Entity} />
-
-            <Route exact path='/:entity/:entity_id/reviews/:id' component={Review} />
+            <Route exact path='/' component={CompanyIndexPage}/>
+            <Route exact path='/companies' component={CompanyIndexPage}/>
           </Switch>
           <Footer />
         </div>

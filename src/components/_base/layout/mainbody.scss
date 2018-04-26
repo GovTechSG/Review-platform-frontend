@@ -1,0 +1,171 @@
+// stylelint-disable block-closing-brace-newline-after
+
+// = = = main body
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #f9f9f9;
+}
+
+// reset unnecessary bootstrap paddings/margins.
+.container-fluid {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex: 1 0 auto;
+}
+
+#js-app {
+  min-height: 100%;
+  height: 100%;
+  //display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+
+  > div {
+    //display: flex;
+    flex: 1 0 auto;
+  }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
+  #js-app {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    > div {
+      display: flex;
+      flex: 1 0 auto;
+    }
+  }
+}
+
+.navbar,
+.row {
+  margin: 0;
+}
+
+.disable-overlay {
+  opacity: 0.3;
+  transition: 0.5s 0.5s ease-in;
+  pointer-events: none;
+  position: relative;
+}
+
+// LOADER
+$animation-time: 1s;
+
+.disable-overlay + .spinner {
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  &.with-msg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .loader {
+      flex: none;
+    }
+
+    .loading-msg {
+      margin-top: 30px;
+      margin-left: 30px;
+      font-size: 16px;
+      width: 500px;
+      text-align: center;
+      color: darken($color-btn-primary, 15%);
+      line-height: 1.5;
+      background-color: rgba($color-background-form, 0.8);
+      border-radius: 3px;
+
+      @media only screen and (max-width: $narrow-breakpoint - 1) {
+        width: 300px;
+        margin-left: 0;
+      }
+    }
+  }
+
+  .loader {
+    position: relative;
+    width: 75px;
+    height: 75px;
+  }
+
+  .box {
+    transition: 0.5s 0.5s ease-in;
+    width: 45%;
+    height: 45%;
+    position: absolute;
+    background: lighten($color-btn-primary, 15%);
+    animation: load $animation-time linear infinite;
+
+    @for $i from 1 through 4 {
+      &:nth-of-type(#{$i}) {
+        @if $i == 1 or $i == 2 {
+          top: 2%;
+        } @else {
+          bottom: 2%;
+        }
+
+        @if $i == 1 or $i == 4 {
+          left: 2%;
+        } @else {
+          right: 2%;
+        }
+        animation-delay: -($animation-time / 4) * ($i - 1);
+      }
+    }
+  }
+
+  @keyframes load {
+    0% {
+      opacity: 0;
+    }
+
+    30% {
+      opacity: 0;
+    }
+
+    90% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+.base-container {
+  margin: 0 auto;
+  text-align: left;
+  max-width: $container-max-width;
+  min-width: $container-min-width;
+  width: inherit;
+  height: 100%;
+}
+
+.page-container {
+  width: 100%;
+  background: $color-background;
+  overflow-y: hidden;
+}
+
+// Flex stretch page
+.extend-page {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}

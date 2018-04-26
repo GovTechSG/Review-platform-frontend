@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Lato");
 .container {
   display: flex;
   justify-content: flex-start;
@@ -54,6 +53,3 @@ hr {
     width: 100%; }
   nav img {
     padding-top: 20px; } }
-
-body {
-  font-family: 'Lato', 'Tahoma'; }
