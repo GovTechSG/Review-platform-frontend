@@ -1,4 +1,8 @@
 @import '_variables.scss';
+@import 'footer.scss';
+@import 'govlogo.scss';
+@import 'mediaSpecific.scss';
+@import 'navbar.scss';
 
 .container {
   display: flex;
@@ -10,84 +14,23 @@
   flex: 1;
 }
 
+// reset unnecessary bootstrap paddings/margins.
+.container-fluid {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex: 1 0 auto;
+}
+.base-container {
+  margin: 0 auto;
+  text-align: left;
+  max-width: $container-max-width;
+  min-width: $container-min-width;
+  width: inherit;
+  height: 100%;
+  box-shadow: 0 0 30px #b9b9b9;
+}
+
 hr {
   border-top: 1px solid black;
-}
-
-.navbar-header {
-  background: #2e6da4;
-
-  h1{
-    font-size: 60px;
-    margin-bottom: 0;
-  }
-
-  p {
-    color: white;
-    margin-top: 0;
-    margin-bottom: 2em;
-  }
-}
-
-.footer-image {
-  margin: 0 auto;
-}
-
-@media (max-width: 992px) {
-  .navbar-header {
-    h1 {
-      display: none;
-    }
-  } 
-
-  nav {
-    img {
-      display: none;
-    }
-  }
-
-  .search-box {
-    width: 100%;
-  }
-
-  .search-button {
-    width: 100%;
-  }
-
-  .review-button {
-    width: 100%;
-  }
-
-  .hide-md-up {
-    display: inherit;
-  }
-}
-
-@media (min-width: 992px) {
-  .navbar-header {
-    height: 175px;
-    position: relative;
-    left: -15px;
-
-    h1 {
-      color: white;
-      font-size: 60px;
-      margin-bottom: 0;
-      text-align: center;
-    }
-
-    p {
-      text-align: center;
-    }
-  }
-
-  a.navbar-brand {
-    width: 100%;
-  }
-
-  nav {
-    img {
-     padding-top: 20px;
-    }
-  }
 }

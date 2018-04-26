@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-import {
-  Row,
-  Col,
-  Button
-} from 'react-bootstrap';
 
 export default class CompanyIndexPage extends Component {
   render() {
