@@ -4,6 +4,7 @@ $landing-sidepadding: 35px;
 
 // colors
 $bgp-brand-color: #1e6ba0;
+$color-form-focus-background: #fffeee;
 $color-brand-primary: $bgp-brand-color;
 $color-background: #f5f5f5;
 $color-background-form: #fbfbfb;
@@ -63,3 +64,8 @@ $text-light: 300;
 $text-semibold: 600;
 $text-heavy: 700;
 $text-normal: 400;
+
+// Sidebar
+$sidebar-width: 290px;
+$sidebar-color: lighten(desaturate($color-btn-primary, 35%), 33%);
+$sidebar-link: #8e9ead;
