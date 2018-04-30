@@ -5,7 +5,9 @@
   padding: 15px 35px 25px 35px;
   background-color: #fff;
   overflow-x: hidden;
-  flex: 1; }
+  flex: 1; 
+  width: 100%;
+}
 
 hr {
   border-top: 1px solid black; }

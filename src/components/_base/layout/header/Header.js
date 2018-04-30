@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import $ from 'jquery';
 import classNames from 'classnames';
-import grpLogoMain from './bgp-logo.svg';
+import grpLogoMain from './grp-logo.svg';
 import govtLogo from './govt-logo.svg';
+import grpLogoAffix from './grp-affix.svg';
 
 export default class Header extends Component {
   static HOME_SECTIONS = [
@@ -60,7 +61,7 @@ export default class Header extends Component {
         <div id="nav" className={classNames({ sticky: this.state.sticky })}>
           <div className="navbar navbar-default bgp-topnavi-wrapper">
             <div className="bgp-nav-logo" id="bgp-nav-logo">
-              <a href="/"><img src={grpLogoMain} alt="Home" /></a>
+              <a href="/"><img src={grpLogoAffix} alt="Home" /></a>
             </div>
 
             <button
